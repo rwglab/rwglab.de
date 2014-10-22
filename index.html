@@ -85,15 +85,19 @@
 
     function navigate(destination) {
 
-        $("#rwglab_nav").find('li.dropdown').toggleClass('active', false);
+        $("#rwglab_nav").find('li').toggleClass('active', false);
         $("#rwglab_nav")
-                .find("ul.dropdown-menu li a[href=#" + destination + "]")
+                .find("li a[href=#" + destination + "]")
                 .closest('li.dropdown')
+                .toggleClass('active', true);
+        $("#rwglab_nav")
+                .find("li a[href=#" + destination + "]")
+                .closest('li')
                 .toggleClass('active', true);
 
         var template;
         if (destination == '') {
-            template = 'home';
+            template = 'project';
         } else if (templates.indexOf(destination) > -1) {
             template = destination;
         } else {
